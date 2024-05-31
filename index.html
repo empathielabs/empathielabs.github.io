@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>empathie labs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
+<link rel="icon" href="favicon.ico">
+<style>
+body, html {
+  height: 100%;
+  font-family: "Comfortaa", sans-serif;
+}
+.bgimg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("lake.jpg");
+  min-height: 75%;
+}
+.menu {
+  display: none;
+}
+.title {
+  color: #d16587; /* soft dark pink */
+}
+.multi-paragraph {
+    white-space: pre-line;
+}
+</style>
+</head>
+<body>
+
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-center w3-padding-large w3-hide-small">
+    <span class="w3-tag">San Francisco, CA</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-white" style="font-size:90px">empathie labs</span>
+  </div>
+  <div class="w3-display-bottomright w3-center w3-padding-large">
+    <span class="w3-text-white">support@empathielabs.com</span>
+  </div>
+</header>
+
+<!-- Add a background color and large text to the whole page -->
+<div class="w3-sand w3-grayscale w3-large">
+
+<!-- About Container -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE LABS</span></h5>
+    <div class="multi-paragraph">
+      Empathie labs specializes in accumulating new skills into small highly capable multitask large language models (LLMs) whose capabilities rival and often exceed those of larger frontier AI models. Empathie models are significantly more cost effective, deployable from a macbook with reasonable latency, due to far less compute demands and the ability to deploy one multi-task model to handle a wide diversity of tasks previously addressed by deploying several specialized models.
+      
+      We have enhanced open sourced pre-trained LLMs, allowing these models to adapt over time from continuous feedback. Our customers own the models we help them train, they benefit from the privacy, lower costs and control. 
+    </div>
+    <p><strong>Contact us at:</strong> support@empathielabs.com</p>
+  </div>
+</div>
+
+<!-- Case Study A: Medical -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">A: Medical Record Categorization & Translation</span></h5>
+    <div class="multi-paragraph">
+      Customer A is a Data as a Service Company leveraging access to exclusive electronic health records (EHR) data to deliver up to date real world clinical insights to clients, driving business decisions for development and commercialization strategy. 
+      
+      To provide actionable evidence backed answers to their client's questions, Customer A partnered with us to train a model that could translate noisy raw unstructured data from a variety of EHR formats and output the relevant clinical findings & treatment plan in a structured json format of standardized categories and rationale for each clinical decision. Due to the sensitive nature of Customer A's data asset, all data needed to stay internal, prohibiting use of frontier models like ChatGPT.
+    </div>
+    <img src="medicalrecords.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      In our first collaboration we leveraged the pretrained skills of large language models to finetune a 2B parameter model with 8K context using fewer than 500 examples to ignore irrelevant text, handle redundancy and categorize only relevant text (highlighted color coded lines, sensitive facts have been modified for privacy) from the raw data. We measured our efficacy using medical statistics including precision, recall and F1 score. 
+      
+      In our second collaboration with Customer A, we maximized the training utility of new clinician labeled medical records and further finetuned the same model from our first collaboration to translate the categorized text into the clinician's rationale for each treatment decision in laymens terms. 
+      
+      Although Customer A no longer had access to data from the first collaboration, we were still able to train the model in such a way as to build on the categorization task rather than replace it, resulting in a multi-task model with excellent precision, recall and F1 score in both tasks of categorization and translation. The resulting model is much lower cost to deploy than frontier models like ChatGPT, and owned exclusively by Customer A for their secure private internal use on sensitive data. 
+      
+      Training Compute Costs: $7.50/hr  x 2 weeks = $2500
+      Data Processing Costs: 80M tokens x $10/1M tokens = $800
+      Engineering Costs: $700 
+      Total: $4000
+    </div>
+  </div>
+</div>
+
+<!-- Case Study B: Chatbot -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">B: Multi-task Chatbot</span></h5>
+    <div class="multi-paragraph">
+      Customer B connects their customers to chatbots via phone, tablet, augmented reality or browser to serve as long term assistants, workers, NPCs, companions, relatives, significant others, or anything clients need their chatbots to be. Their pain points are: 
+      <ul>
+        <li>The engineering complexity of managing several models to perform various tasks in production such as conversation generation, safety detection, response quality monitoring, etc.</li>
+        <li>The latency of responses from large model APIs and self-hosted models even with inference time optimizations</li>
+        <li>The long and ever growing input prompts needed for entire chat history to stay in memory helping the chatbot to stay self-consistent over multiple turns</li>
+      </ul>
+    </div>
+    <img src="multitaskprompting.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      <ul>
+        <li>To address the engineering complexity of managing several models, we finetuned one model to switch tasks controlled by the use of custom instructions and symbols to indicate which mode the LLM is working in. On the left is a comprehensive dialogue prompt used to instruct the model to act as a chatbot obeying the behavior described in the system prompt and staying consistent with the chat history leading up to the generation prompt. On the right is a classification prompt used to classify the conversational transcript thus far into one of several categories.</li>
+        <li>To address latency we shorted the input prompt and model size, but finetuned the model using an augmented version of Customer B's internal data to generate the desired output using these more concise instruction prompts.</li> 
+        <li>To address the increasing costs of growing chat histories, we added yet another mode to the same multi-task generation and preference model. The new mode summarized conversations into such a format that could be added to the system prompt instead of the using the original full conversation transcript. 
+            We then finetuned the model to optimally use the summary portion of the prompt to generate chat responses self-consistent with the context of the beginning, middle and recent conversation.
+      </ul>
+    </div>
+    <img src="awarechatbot.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      The resulting model is being used to analyze the user's and the model's generations before responding. The stewardship mode monitors the model's responses for being helpful and compelling. The consistency classifier grades the model on it's coherence to the entire conversation thus far as opposed to hallucinating or drifting off topic. The guadianship classifier checks if the user is in danger and if the model response is adherent to a custom set of rules customized by Customer B. 
+
+      Training Compute Costs: $18/hr  x 4 weeks = $6000
+      Data Processing Costs: 500M tokens x $10/1M tokens = $5000
+      Engineering Costs: $4000 
+      Total: $15,000
+    </div>
+  </div>
+</div>
+
+<!-- Case Study C: Robust RAG -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">C: Updating Knowledge & Skills</span></h5>
+    <div class="multi-paragraph">
+      Popular methods to address hallucination and out of date knowledge are retrieval augmented generation (RAG) and function calling. A known limitation of LLMs stem from their pre-training on a corpus of data fixed in time. Without augmentation, an LLM will have no knowledge of events that occurred after its pre-training or of information not scraped for its pre-training such as private data, thus methods such as RAG or function calling are used to insert some hopefully useful text into the prompt to compensate. 
+      In RAG, the user question is embedded to perform a vector similarity search across a set of documents to retrieve text that can be inserted into the prompt. Function calling involves using the model’s output to query an API for the latest news and insert that into the prompt. Customer C uses empathie to update their finance LLM weekly with the most recent financial reports, they are particularly sensitive to hallucinations and prefer the model to simply reply "I dont know" when the relevant information is neither contained in the RAG injected text or in the weights. 
+    </div>
+    <img src="ragfunction.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      It is not clear how to best inject new unstructured knowledge into prompts or how to encourage LLMs to gracefully compensate for failed document retrieval. For example, the document containing the title of an article might be mistakenly retrieved, but the body of the article is on the next document. 
+    </div>
+    <img src="longprompt.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      Empathie lab's technology allows for frequent repeated additive finetuning updates to the same LLM. These updates both teach LLMs how to appropriately use injected information and also updates the weights with recent events to allow the model to smoothly transition between using knowledge encoded in it's parameters and knowledge injected into it's prompt.
+
+      Training Compute Costs: $4/hr  x 1 day = $100
+      Data Processing Costs: 2M tokens x $10/1M tokens = $20
+      Engineering Costs: $80 
+      Total: $200 per update
+    </div>
+  </div>
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-48 w3-large">
+  <p>© 2024 empathie labs. All rights reserved.</p>
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("myLink").click();
+</script>
+
+</body>
+</html>
