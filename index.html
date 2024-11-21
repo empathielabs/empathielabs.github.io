@@ -62,6 +62,29 @@ body, html {
   </div>
 </div>
 
+
+<!-- The Tech -->
+<div class="w3-container" id="about">
+  <div class="w3-content" style="max-width:700px">
+    <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Medical Record Categorization & Translation</span></h5>
+    <div class="multi-paragraph">
+      Large language models are valuable because the same mode understands from the prompt which of many tasks the user is asking it to perform, they are multi-task models. However when we finetune large language models they become specialized, more skilled at one task, at the expense of poorer quality in other tasks.
+
+      This skill degredation is called catastrophic forgetting and it is the reason we spend so much money on compute retraining models from scratch rather than building on top of the skills our model has already spent so much time learning during pretraining, posttraining and finetunes.
+    </div>
+    <img src="ContLearn.png" style="width:100%;max-width:1000px" class="w3-margin-top">
+    <div class="multi-paragraph">
+      Background: The model in the plot is a transformer LLM and the 2 skills A & B are generative tasks requiring several output tokens.
+
+      1. With standard fine-tuning (purple) there is a 40% drop in Skill A quality that's still worsening as Skill B improves.
+
+      2. Continual learning allows one model to reach desired quality for both skills (blue). Without continual learning, skill A and B have different baseline performances and different rates of learning progress. 
+
+      3. We can learn Skill B after deleting Skill A data, the datasets have no overlap. During update 1 - 20 the large language model is only training on Skill A. During update 21 - 60 the model is only training on Skill B.
+    </div>
+  </div>
+</div>
+  
 <!-- Case Study A: Medical -->
 <div class="w3-container" id="about">
   <div class="w3-content" style="max-width:700px">
